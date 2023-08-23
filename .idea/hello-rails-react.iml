@@ -45,6 +45,7 @@
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.4.18, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.2.2, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, ruby-3.2.2-p53) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="cssbundling-rails (v1.2.0, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.8.0, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.12.0, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.1.0, ruby-3.2.2-p53) [gem]" level="application" />
@@ -79,6 +80,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.0, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.4.2, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.2.2, ruby-3.2.2-p53) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tailwindcss-rails (v2.0.30, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.2.2, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.0, ruby-3.2.2-p53) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbo-rails (v1.4.0, ruby-3.2.2-p53) [gem]" level="application" />
@@ -102,6 +104,9 @@
         <option value="benchmark" />
         <option value="channel" />
         <option value="controller" />
+        <option value="erb:controller" />
+        <option value="erb:mailer" />
+        <option value="erb:scaffold" />
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
@@ -140,6 +145,9 @@
         <option value="benchmark" />
         <option value="channel" />
         <option value="controller" />
+        <option value="erb:controller" />
+        <option value="erb:mailer" />
+        <option value="erb:scaffold" />
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
@@ -248,6 +256,22 @@
             <subtasks>
               <RakeTaskImpl description="Lookup first-level dependencies for TEMPLATE (like messages/show or comments/_comment.html)" fullCommand="cache_digests:dependencies" id="dependencies" />
               <RakeTaskImpl description="Lookup nested dependencies for TEMPLATE (like messages/show or comments/_comment.html)" fullCommand="cache_digests:nested_dependencies" id="nested_dependencies" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="css">
+            <subtasks>
+              <RakeTaskImpl description="Build your CSS bundle" fullCommand="css:build" id="build" />
+              <RakeTaskImpl description="Remove CSS builds" fullCommand="css:clobber" id="clobber" />
+              <RakeTaskImpl id="install">
+                <subtasks>
+                  <RakeTaskImpl description="Install Bootstrap" fullCommand="css:install:bootstrap" id="bootstrap" />
+                  <RakeTaskImpl description="Install Bulma" fullCommand="css:install:bulma" id="bulma" />
+                  <RakeTaskImpl description="Install PostCSS" fullCommand="css:install:postcss" id="postcss" />
+                  <RakeTaskImpl description="Install Sass" fullCommand="css:install:sass" id="sass" />
+                  <RakeTaskImpl description="Install shared elements for all bundlers" fullCommand="css:install:shared" id="shared" />
+                  <RakeTaskImpl description="Install Tailwind" fullCommand="css:install:tailwind" id="tailwind" />
+                </subtasks>
+              </RakeTaskImpl>
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="db">
@@ -387,6 +411,14 @@
                   <RakeTaskImpl description="" fullCommand="stimulus:manifest:update" id="update" />
                 </subtasks>
               </RakeTaskImpl>
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="tailwindcss">
+            <subtasks>
+              <RakeTaskImpl description="Build your Tailwind CSS" fullCommand="tailwindcss:build" id="build" />
+              <RakeTaskImpl description="Remove CSS builds" fullCommand="tailwindcss:clobber" id="clobber" />
+              <RakeTaskImpl description="Install Tailwind CSS into the app" fullCommand="tailwindcss:install" id="install" />
+              <RakeTaskImpl description="Watch and build your Tailwind CSS on file changes" fullCommand="tailwindcss:watch" id="watch" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="time">
