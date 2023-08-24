@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'api/greetings#index'
   namespace :api do
-    get 'greetings/random_greeting', to: 'greetings#random_greeting'
+    get 'greetings/random_greeting', to: 'greetings#random_greeting', defaults: { format: 'json' }
   end
+  root 'api/greetings#index'
 end
