@@ -12,7 +12,9 @@ function Greeting() {
     }, []);
 
     return (
-        <h2>{greeting}</h2>
+        <div>
+            <h2>{greeting}</h2>
+        </div>
     )
 }
 

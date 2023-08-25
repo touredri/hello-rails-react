@@ -1,11 +1,12 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "/api/greetings";
+const API_URL = "/api/greetings/random_greeting";
 
 export const fetchGreeting = createAsyncThunk("greeting", async () => {
     const res = await axios.get(API_URL);
-    return res.data.greeting;
+    console.log(res.data.greeting);
+    return res.data.greeting.greeting;
 });
 
 const initialState = {

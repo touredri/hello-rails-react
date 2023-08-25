@@ -4,8 +4,8 @@
   "scripts": {
     "lint": "eslint --ext .js app/javascript",
     "lint:fix": "eslint --fix --ext .js app/javascript",
-    "build": "webpack --config webpack.config.js",
-    "start": "bin/dev"
+    "start": "webpack-dev-server --open",
+    "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
@@ -43,6 +43,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
-    "stylelint-scss": "^3.21.0"
+    "stylelint-scss": "^3.21.0",
+    "webpack-dev-server": "^4.15.1"
   }
 }

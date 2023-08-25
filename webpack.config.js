@@ -21,6 +21,11 @@ module.exports = {
     sourceMapFilename: "[file].map",
     path: path.resolve(__dirname, "app/assets/builds"),
   },
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3000, // Change to the desired port
+  },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
